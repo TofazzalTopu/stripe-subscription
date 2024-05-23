@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:th='http://www.thymeleaf.org'>
+<head>
+    <title> Stripe Subscription </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+            body {
+                font-family: 'arial';
+            }
+            #checkout-form input,
+            #checkout-form button {
+                display: block;
+                margin: 12px;
+            }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <form action='/stripe/charge' method='POST' id='checkout-form'>
+        <div class="box-body">
+            <div class="row col-md-12">
+                <div class="form-group">
+
+                    <h2> Stripe Subscription </h2> <br/>
+
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <div class="col-md-8">
+                    <input type='hidden' th:value='${amount}' name='amount'/>
+                    <label>Price:<span th:text='${amount/100}'/></label>
+                    <script
+                            src='https://checkout.stripe.com/checkout.js'
+                            class='stripe-button'
+                            th:attr='data-key=${stripePublicKey},
+                         data-amount=${amount},
+                         data-currency=${currency}'
+                            data-name='Stripe Payment'
+                            data-description='Spring course checkout'
+                            data-locale='auto'
+                            data-zip-code='false'>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
