@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title> Subscription Details </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="content-wrapper">
+    <div class="container">
+        <form id="stripe-app" role="form">
+            <div class="box-body">
+                <div class="row col-md-12">
+                    <div class="form-group">
+
+                        <h2> Error During Stripe Subscription </h2> <br/>
+                        <label style="padding-left: 30%; color: red; align-content: center;" th:if="${error}"
+                               th:text="${error}"/>
+                    </div>
+                </div>
+
+                </br>
+                <div class="row col-md-12">
+                    <div class="form-group col-md-4">
+                        <a href='/stripe/checkout'><h3> Checkout again => </h3></a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

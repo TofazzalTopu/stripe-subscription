@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <title> Subscription Details </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="content-wrapper">
+    <div class="container">
+        <form id="stripe-app" role="form">
+            <div class="box-body">
+                <div class="row col-md-12">
+                    <div class="form-group">
+
+                        <h2> View Stripe Subscription Details</h2> <br/>
+                        <label style="padding-left: 30%; color: red; align-content: center;" th:if="${error}"
+                               th:text="${error}"/>
+                        <label style="padding-left: 30%; color: green; align-content: center;" th:if="${success}"
+                               th:text="${success}"/>
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <div class="form-group col-md-4">
+                        <label>Subscription ID: &nbsp;<span style="color: red;">*</span></label>
+                        <input readonly type="text" th:field="*{subscription.id}">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Subscription Status: &nbsp;<span style="color: red;">*</span></label>
+                        <input readonly type="text" th:field="*{subscription.status}">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Currency: &nbsp;<span style="color: red;">*</span></label>
+                        <input readonly type="text" th:field="*{subscription.currency}">
+                    </div>
+
+                </div>
+                <div class="row col-md-12">
+                    <div class="form-group col-md-4">
+                        <label>Customer ID: &nbsp;<span style="color: red;">*</span></label>
+                        <input readonly type="text" th:field="*{customer.id}">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Customer Email: &nbsp;<span style="color: red;">*</span></label>
+                        <input readonly type="text" th:field="*{customer.email}">
+                    </div>
+                </div>
+                </br>
+                <div class="row col-md-12">
+                    <div class="form-group col-md-4">
+                        <a href='/stripe/checkout'><h4> Checkout again </h4></a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

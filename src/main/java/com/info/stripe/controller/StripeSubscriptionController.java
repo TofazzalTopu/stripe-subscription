@@ -32,7 +32,7 @@ public class StripeSubscriptionController {
     @ExceptionHandler(StripeException.class)
     public String handleError(Model model, StripeException ex) {
         model.addAttribute("error", ex.getMessage());
-        return "result";
+        return "error";
     }
 
     @RequestMapping("/checkout")
@@ -49,7 +49,8 @@ public class StripeSubscriptionController {
         System.out.println("subscriptionInfo: " + subscriptionInfo);
         model.addAttribute("customer", subscriptionInfo.getCustomer());
         model.addAttribute("subscription", subscriptionInfo.getSubscription());
-        return "result";
+        model.addAttribute("success", "Stripe Subscription Created Successfully.");
+        return "success";
     }
 
     @PostMapping("/price/{amount}")
