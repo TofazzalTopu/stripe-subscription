@@ -17,5 +17,5 @@ java -jar stripe-integration.jar
 Implementation One:
 Checkout URL: http://localhost:8080/stripe/create-checkout
 
-Implementation One:
+Implementation Two:
 Checkout URL: http://localhost:8080/stripe/checkout
