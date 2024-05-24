@@ -14,5 +14,8 @@ or
 mvn clean install -U
 java -jar stripe-integration.jar
 ```
+Implementation One:
+Checkout URL: http://localhost:8080/stripe/create-checkout
 
-Checkout Page: http://localhost:8080/stripe/checkout
+Implementation One:
+Checkout URL: http://localhost:8080/stripe/checkout
