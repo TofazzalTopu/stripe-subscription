@@ -72,7 +72,7 @@ public class StripeSubscriptionController {
     }
 
     @PostMapping("/create-portal-session/{session_id}")
-    public String createPortalSession(@PathVariable String session_id, HttpServletRequest request, HttpServletResponse response) throws StripeException {
+    public String createPortalSession(@PathVariable String session_id) throws StripeException {
         Session checkoutSession = Session.retrieve(session_id);
 
         String customer = checkoutSession.getCustomer();
