@@ -5,7 +5,6 @@ import com.info.stripe.model.SubscriptionInfo;
 import com.info.stripe.service.StripeSubscriptionService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Price;
-import com.stripe.model.Subscription;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +28,6 @@ public class StripeSubscriptionController {
     @Value("${STRIPE_PUBLIC_KEY}")
     private String stripePublicKey;
 
-    @ExceptionHandler(StripeException.class)
-    public String handleError(Model model, StripeException ex) {
-        model.addAttribute("error", ex.getMessage());
-        return "error";
-    }
-
     @RequestMapping("/checkout")
     public String checkout(Model model) {
         model.addAttribute("amount", 5 * 100); // in cents
@@ -56,12 +49,6 @@ public class StripeSubscriptionController {
     @PostMapping("/price/{amount}")
     public Price createPrice(@PathVariable Long amount) throws Exception {
         return stripeSubscriptionService.createPrice(amount);
-    }
-
-    @GetMapping(value = "/{subscriptionId}")
-    public Subscription retrieveSubscription(@PathVariable String subscriptionId) throws Exception {
-        Subscription subscriptionInfo = stripeSubscriptionService.retrieveSubscription(subscriptionId);
-        return subscriptionInfo;
     }
 
 }
