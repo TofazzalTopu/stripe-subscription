@@ -34,7 +34,7 @@ public class StripeSubscriptionController {
 
     final String YOUR_DOMAIN = "http://localhost:8080";
 
-    @GetMapping("create-checkout")
+    @GetMapping("/create-checkout")
     public String createCheckout(Model model) {
         return "/stripe/checkout";
     }
