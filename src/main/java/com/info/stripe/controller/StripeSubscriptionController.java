@@ -40,7 +40,7 @@ public class StripeSubscriptionController {
     }
 
     @GetMapping("/create-checkout-session")
-    public String createCheckoutSession() {
+    public String createCheckoutSession() { //first call this method, it will open subscription page
         System.out.println();
         try {
             SessionCreateParams params =
